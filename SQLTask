@@ -1,0 +1,32 @@
+В БД есть таблица с регистрацией клиентов вида CustomerId, RegistrationDateTime, Name и таблица с покупками клиентов вида CustomerId, PurchaiseDatetime, ProductName. Напишите SQL запрос, который выберет имена клиентов, которые когда-либо покупали молоко, но не покупали сметану за последний месяц.
+declare @dateFrom as DATETIME = '2017-12-01 00:00:00', @dateTo as DATETIME = '2017-12-31 00:00:00'
+
+1)
+select distinct Name
+from Customers c
+  join Purchaise p
+  on c.CustomerId = p.CustomerId
+where p.ProductName = 'Молоко'
+and not exists(
+      select Name
+      from Purchaise p1
+      where p1.CustomerId = c.CustomerId
+      and p1.ProductName = 'Сметана'
+      and p1.PurchaiseDatetime between @dateFrom and @dateTo)
+-------------------------------------------------------------------
+
+2)
+select distinct Name
+from Customers c
+  join Purchaise p
+  on c.CustomerId = p.CustomerId
+where p.ProductName = 'Молоко'
+
+except
+
+select distinct Name
+from Customers c
+  join Purchaise p
+  on c.CustomerId = p.CustomerId
+where p.ProductName = 'Сметана'
+and p.PurchaiseDatetime between @dateFrom and @dateTo)
