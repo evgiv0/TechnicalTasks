@@ -1,6 +1,6 @@
 declare @dateFrom as DATETIME = '2017-12-01 00:00:00', @dateTo as DATETIME = '2017-12-31 00:00:00'
 
-1)
+--1)
 select distinct Name
 from Customers c
   join Purchaise p
@@ -14,7 +14,7 @@ and not exists(
       and p1.PurchaiseDatetime between @dateFrom and @dateTo)
 -------------------------------------------------------------------
 
-2)
+--2)
 select distinct Name
 from Customers c
   join Purchaise p
