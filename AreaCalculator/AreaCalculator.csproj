@@ -40,10 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\FigureType.cs" />
+    <Compile Include="Abstract\TriangleType.cs" />
     <Compile Include="Concrete\RightTriangle.cs" />
     <Compile Include="Abstract\Shape.cs" />
     <Compile Include="Abstract\Triangle.cs" />
     <Compile Include="Area.cs" />
+    <Compile Include="Concrete\RightTriangleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

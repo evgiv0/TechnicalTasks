@@ -1,12 +1,15 @@
-﻿namespace AreaCalculator.Abstract
+﻿using AreaCalculator.Concrete;
+
+namespace AreaCalculator.Abstract
 {
-    public abstract class Triangle : Shape
+    public class Triangle : Shape
     {
-        protected double SideA { get; set; }
-        protected double SideB { get; set; }
-        protected double SideC { get; set; }
-        protected double Height { get; set; }
-        protected double AllowedDifference { get; set; }
+        public double SideA { get; set; }
+        public double SideB { get; set; }
+        public double SideC { get; set; }
+        public double Height { get; set; }
+        public double AllowedDifference { get; set; }
+        public TriangleType TriangleType { get; set; }
 
 
         protected Triangle()
@@ -18,21 +21,32 @@
             SideA = sideA;
             SideB = sideB;
             SideC = sideC;
+            TriangleType = new RightTriangleType();
         }
 
-        protected Triangle(double sideA, double sideB, double sideC, double allowedDifference)
+        protected Triangle(double sideA, double sideB, double sideC, TriangleType triangleType) : this(sideA, sideB, sideC)
         {
-            SideA = sideA;
-            SideB = sideB;
-            SideC = sideC;
+            TriangleType = triangleType;
+        }
+
+
+        protected Triangle(double sideA, double sideB, double sideC, double allowedDifference) : this(sideA, sideB, sideC)
+        {
             AllowedDifference = allowedDifference;
         }
-        //Другие конструкторы, для треугольников с другой формулой расчета площади...
 
-
-        protected double GetPerimeter()
+        protected Triangle(double sideA, double sideB, double sideC, double allowedDifference, TriangleType triangleType) : this(sideA, sideB, sideC, allowedDifference)
         {
-            return SideA + SideB + SideC;
+            TriangleType = triangleType;
         }
+
+
+        public override double GetArea()
+        {
+
+        }
+
+
+
     }
 }
