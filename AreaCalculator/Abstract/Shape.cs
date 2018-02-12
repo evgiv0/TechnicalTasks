@@ -4,17 +4,17 @@ namespace AreaCalculator.Abstract
 {
     public abstract class Shape
     {
+        public FigureType FigureType { get; set; }
+
+        
         public virtual double GetArea(FigureType figureType)
         {
-            try { 
-            if (figureType.IsRightFigure(this)) {
-                    return figureType.GetArea(this);
-                }
-            }
-            catch
+
+            if (!figureType.IsRightFigure(this))
             {
-                throw;
+                throw new ArgumentException("figure is not right");
             }
+            return figureType.GetArea(this);
 
         }
     }

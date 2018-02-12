@@ -6,7 +6,7 @@ namespace AreaCalculator
     {
         public static double GetArea(Shape shape)
         {
-            return shape.GetArea();
+            return shape.GetArea(shape.FigureType);
         }
     }
 }

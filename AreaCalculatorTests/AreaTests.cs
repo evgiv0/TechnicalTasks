@@ -13,7 +13,7 @@ namespace AreaCalculatorTests
         {
             try
             {
-                Area.GetArea(new RightTriangle(3, -1, 5));
+                Area.GetArea(new Triangle(3, -1, 5, new RightTriangleType()));
             }
             catch (ArgumentException ex)
             {
@@ -26,7 +26,8 @@ namespace AreaCalculatorTests
         {
             try
             {
-                Area.GetArea(new RightTriangle(3, 10, 1));
+                Area.GetArea(new Triangle(3, -1, 5, new RightTriangleType()));
+
             }
             catch (ArgumentException ex)
             {
@@ -37,10 +38,11 @@ namespace AreaCalculatorTests
         [TestMethod]
         public void GetArea_PutRightTriangle_ShouldReturnRightArea()
         {
-            Assert.AreEqual(6, Area.GetArea(new RightTriangle(3, 4, 5)));
-            Assert.AreEqual(10, Area.GetArea(new RightTriangle(4, 5, 6.4031, 0.1)));
-            Assert.AreEqual(3850, Area.GetArea(new RightTriangle(100, 77, 126.21, 0.1)));
-            Assert.AreEqual(60.43, Area.GetArea(new RightTriangle(15.3, 7.9, 17.21, 0.5)));
+            Assert.AreEqual(6, Area.GetArea(new Triangle(3, -1, 5, new RightTriangleType())));
+
+            Assert.AreEqual(10, Area.GetArea(new Triangle(3, -1, 5, 0.1, new RightTriangleType())));
+            Assert.AreEqual(3850, Area.GetArea(new Triangle(100, 77, 126.21, 0.1, new RightTriangleType())));
+            Assert.AreEqual(60.43, Area.GetArea(new Triangle(15.3, 7.9, 17.21, 0.5, new RightTriangleType())));
         }
     }
 }

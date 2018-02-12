@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AreaCalculator.Concrete;
+using System;
 
 namespace AreaCalculator.Abstract
 {
@@ -6,13 +7,11 @@ namespace AreaCalculator.Abstract
     {
         public override bool IsRightFigure(Shape shape)
         {
-            if (!(shape is Triangle))
-                throw new ArgumentException("Figure is not a triangle.");
-
             var currentTrinagle = (Triangle)shape;
 
             if (!(currentTrinagle.SideA > 0 && currentTrinagle.SideB > 0 && currentTrinagle.SideC > 0))
-                return false;
+                throw new ArgumentException("All sides of the triangle must be greater then 0");
+
             return true;
         }
 

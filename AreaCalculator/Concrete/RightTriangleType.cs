@@ -1,9 +1,5 @@
 ﻿using AreaCalculator.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AreaCalculator.Concrete
 {
@@ -11,7 +7,7 @@ namespace AreaCalculator.Concrete
     {
         public override bool IsRightFigure(Shape shape)
         {
-            if(!IsRightTriangle((Triangle)shape))
+            if (!IsRightTriangle((Triangle)shape))
                 throw new ArgumentException("The triangle is not right");
             return base.IsRightFigure(shape);
         }
@@ -23,7 +19,7 @@ namespace AreaCalculator.Concrete
             var result = Math.Sqrt(halfPerimeter * (halfPerimeter - currentTriangle.SideA)
                                    * (halfPerimeter - currentTriangle.SideB)
                                    * (halfPerimeter - currentTriangle.SideC));
-            return result;
+            return Math.Round(result, 2);
         }
 
         private bool IsRightTriangle(Triangle triangle)
