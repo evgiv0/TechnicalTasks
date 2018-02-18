@@ -20,7 +20,7 @@
             SideC = sideC;
         }
 
-        protected Triangle(double sideA, double sideB, double sideC, double allowedDifference)
+        protected Triangle(double sideA, double sideB, double sideC, double allowedDifference) : this(sideA, sideB, sideC)
         {
             SideA = sideA;
             SideB = sideB;

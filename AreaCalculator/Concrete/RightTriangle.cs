@@ -14,22 +14,29 @@ namespace AreaCalculator.Concrete
         }
 
         /// <summary>
-        /// Calculate area of the right triangle
+        /// Check for triangle is right. Exception will throw otherwise
         /// </summary>
         /// <exception cref="ArgumentException">Will throw when one of the triangle`s sides less/equal 0 or when the received triangle is not right.</exception>
-        public override double GetArea()
+        protected override void IsRightFigure()
         {
-            if (!(SideA > 0 && SideB > 0 && SideC > 0))
+            if (!CheckForPositiveValues())
                 throw new ArgumentException("All sides of the triangle must be greater then 0");
 
             if (!IsRightTriangle())
                 throw new ArgumentException("The triangle is not right");
+        }
 
+        protected override double GetAreaFigure()
+        {
             var halfPerimeter = GetPerimeter() / 2;
-            var result = Math.Sqrt(halfPerimeter * (halfPerimeter - SideA)
+            return Math.Sqrt(halfPerimeter * (halfPerimeter - SideA)
                                    * (halfPerimeter - SideB)
-                                   * (halfPerimeter - SideC));
-            return Math.Round(result, 2);
+                                   * (halfPerimeter - SideC)); ;
+        }
+
+        private bool CheckForPositiveValues()
+        {
+            return (SideA > 0 && SideB > 0 && SideC > 0);
         }
 
         private bool IsRightTriangle()
