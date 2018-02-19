@@ -6,7 +6,7 @@ using System;
 namespace AreaCalculatorTests
 {
     [TestClass]
-    public class AreaTests
+    public class TriangleTest
     {
         [TestMethod]
         public void GetArea_PutNegativeValue_ShouldThrowArgumentException()

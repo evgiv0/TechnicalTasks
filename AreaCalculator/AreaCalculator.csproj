@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Circle.cs" />
     <Compile Include="Concrete\RightTriangle.cs" />
     <Compile Include="Abstract\Shape.cs" />
     <Compile Include="Abstract\Triangle.cs" />

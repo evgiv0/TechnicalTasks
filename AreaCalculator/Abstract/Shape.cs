@@ -9,8 +9,7 @@ namespace AreaCalculator.Abstract
         public double GetArea()
         {
             IsRightFigure();
-            var receivedArea = GetAreaFigure();
-            return RoundValue(receivedArea, defaultAccuracy);
+            return RoundValue(GetAreaFigure(), defaultAccuracy);
 
         }
 
